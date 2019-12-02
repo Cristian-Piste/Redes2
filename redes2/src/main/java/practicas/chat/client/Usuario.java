@@ -27,7 +27,7 @@ public class Usuario extends javax.swing.JFrame {
         try {
             je = jEditorPane1;
             // je.setContentType("text/html");
-            combo = jComboBox1;
+            combo = getjComboBox1();
             Thread tu = new ThreadUsuario(je, combo, usuario);
             tu.start();
             group = InetAddress.getByName(MCAST_ADDR);
@@ -48,12 +48,13 @@ public class Usuario extends javax.swing.JFrame {
         }
     }
 
-    private void initComponents() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private void initComponents() {
 
         JPanel jPanel1 = new JPanel();
         JScrollPane jScrollPane1 = new JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
-        jComboBox1 = new javax.swing.JComboBox();
+        setjComboBox1(new javax.swing.JComboBox());
         // Variables declaration - do not modify//GEN-BEGIN:variables
         JButton jButton1 = new JButton();
         JScrollPane jScrollPane2 = new JScrollPane();
@@ -66,7 +67,7 @@ public class Usuario extends javax.swing.JFrame {
         jEditorPane1.setEditable(false);
         jScrollPane1.setViewportView(jEditorPane1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos" }));
+        getjComboBox1().setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Todos" }));
 
         jButton1.setText("Enviar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +97,7 @@ public class Usuario extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                .addComponent(getjComboBox1(), javax.swing.GroupLayout.PREFERRED_SIZE,
                                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(24, 24, 24))
@@ -106,7 +107,7 @@ public class Usuario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
                         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup().addGap(30, 30, 30).addComponent(jComboBox1,
+                        .addGroup(jPanel1Layout.createSequentialGroup().addGap(30, 30, 30).addComponent(getjComboBox1(),
                                 javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addComponent(jScrollPane1,
@@ -132,13 +133,13 @@ public class Usuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-            if (jComboBox1.getSelectedItem().toString().equals("Todos")) {
+            if (getjComboBox1().getSelectedItem().toString().equals("Todos")) {
                 msj.setTipo(2);
             } else {
                 msj.setTipo(3);
             }
             msj.setOrigen(usuario);
-            msj.setDestino(jComboBox1.getSelectedItem().toString());
+            msj.setDestino(getjComboBox1().getSelectedItem().toString());
             msj.setMensaje(jTextArea2.getText());
             if (je.getText().equals("")) {
                 je.setText("Tu: " + jTextArea2.getText());
@@ -181,7 +182,15 @@ public class Usuario extends javax.swing.JFrame {
         });
     }
 
-    @SuppressWarnings("rawtypes")
+    public javax.swing.JComboBox<String> getjComboBox1() {
+		return getjComboBox1();
+	}
+
+	public void setjComboBox1(@SuppressWarnings("rawtypes") javax.swing.JComboBox jComboBox1) {
+		this.jComboBox1 = jComboBox1;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unused" })
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JTextArea jTextArea2;

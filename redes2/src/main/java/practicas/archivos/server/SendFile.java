@@ -12,6 +12,7 @@ public class SendFile {
 	static int bufferSize = 1024;
 	static byte[] buffer = new byte[bufferSize];
 	static String serverPath;
+	private static ServerSocket ss;
 
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
@@ -22,8 +23,7 @@ public class SendFile {
 		serverPath = args[1];
 		int i, resultadoLectura = 0;
 
-		// Socket de servidor
-		ServerSocket ss = new ServerSocket(port);
+		ss = new ServerSocket(port);
 
 		while (true) {
 			// Aceptamos un cliente y abrimos los flujos de IO
